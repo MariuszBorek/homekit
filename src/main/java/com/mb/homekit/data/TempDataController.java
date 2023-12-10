@@ -21,7 +21,7 @@ public class TempDataController {
         return tempDataRepository.findAll();
     }
 
-    @GetMapping("/add")
+    @GetMapping("/addSample")
     public void createData() {
         TempData tempData = new TempData();
         tempData.setDataType("csv");
@@ -29,7 +29,7 @@ public class TempDataController {
         tempDataRepository.save(tempData);
     }
 
-    @PostMapping
+    @PostMapping("/add")
     public TempData createData(@RequestBody TempData tempData) {
         return tempDataRepository.save(tempData);
     }
