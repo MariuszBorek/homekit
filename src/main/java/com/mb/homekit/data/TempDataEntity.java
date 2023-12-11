@@ -6,7 +6,7 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 
 @Entity
-public class TempData {
+public class TempDataEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

@@ -17,20 +17,23 @@ public class TempDataController {
     }
 
     @GetMapping("/get")
-    public List<TempData> getData() {
+    public List<TempDataEntity> getData() {
         return tempDataRepository.findAll();
     }
 
     @GetMapping("/addSample")
     public void createData() {
-        TempData tempData = new TempData();
-        tempData.setDataType("csv");
-        tempData.setData("data");
-        tempDataRepository.save(tempData);
+        TempDataEntity tempDataEntity = new TempDataEntity();
+        tempDataEntity.setDataType("csv");
+        tempDataEntity.setData("data");
+        tempDataRepository.save(tempDataEntity);
     }
 
     @PostMapping("/add")
-    public TempData createData(@RequestBody TempData tempData) {
-        return tempDataRepository.save(tempData);
+    public TempDataEntity createData(@RequestBody TempDataDto tempDataDto) {
+        TempDataEntity tempDataEntity = new TempDataEntity();
+        tempDataEntity.setData(tempDataDto.getData());
+        tempDataEntity.setDataType(tempDataDto.getDataType());
+        return tempDataRepository.save(tempDataEntity);
     }
 }
